@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Javari">
+        <meta name="description">
+        <title>Edit Expense</title>
+    </head>
+    <body>
+        <h2>Edit Expense</h2>
+        <p>Debug : Template Expense</p>
+        <form method="POST">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit">Save</button>
+        </form>
+    </body>
+</html>

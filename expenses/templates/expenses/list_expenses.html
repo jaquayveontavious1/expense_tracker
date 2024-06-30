@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Javari">
+        <title>List Expense</title>
+    </head>
+    <body>
+       <h1>Successfully Added </h1>
+       <h2>Would you like to add another expense?</h2>
+       <a href="{% url 'expenses:add'%}">Add another expense?</a>
+        <h2>List of Expenses</h2>
+       <ul>
+        {% for expense in expenses%}
+            <li> 
+                {{expense.amount}} - {{expense.category}} on {{expense.date}}
+                <a href="{% url 'expenses:edit_expense' expense.pk %}">Edit</a>
+                <a href="{% url 'expenses:delete_expense' expense.pk%}">Delete</a>
+            </li>
+        {% endfor %}
+       </ul>
+    </body>
+</html>

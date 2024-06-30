@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Expense</title>
+    </head>
+    <body>
+        <h3>Add an Expense</h3>
+        <h2>{% if form.instance.pk%}Edit{%else%}Add{%endif%}Expense</h2>
+        <form method = "POST">
+            {%csrf_token%}
+            {{ form.as_p}}
+            <button type="submit">Save</button>
+        </form>
+        {% if messages%}
+            {%for message in messages%}
+                <div class="alert">
+                    {{ message }}
+                </div>
+            {%endfor%}
+        {%endif%}
+    </body>
+</html>

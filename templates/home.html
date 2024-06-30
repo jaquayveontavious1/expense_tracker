@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+
+    </head>
+    <body>
+        <h1>Home</h1>
+        
+        {%if user.is_authenticated%}
+        Hi {{user.username}}
+        <h2>Welcome To Your Expense Tracker</h2>
+        <h3>Would you like to add an expense?<a href="{% url 'expenses:add'%}" >Add here!!</a></h3>
+        <h3>Would you like to edit an expense? <a href="{% url 'expenses:list' %}" >Edit</a></h3>
+        <h3>Would you like to view all your expenses? <a href="{% url 'expenses:list'%}">View ! </a></h3>
+        <h3>Would you like to delete an expense? <a href="{% url 'expenses:list'%}"> Delete!!</a></h3>
+        <form action="{% url 'logout'%}" method="POST">
+            {%csrf_token%}
+            <button type="submit">Log Out</button>
+        </form>
+        {%else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login'%}">Login ? </a>
+        <p>Create a new account? </p>
+        <a href="{% url 'expenses:signup'%}">Sign Up!</a>
+        {% endif %}
+    </body>
+</html>
